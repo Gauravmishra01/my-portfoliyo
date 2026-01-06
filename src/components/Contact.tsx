@@ -9,6 +9,8 @@ import {
   Linkedin,
   Twitter,
 } from "lucide-react";
+
+// @ts-ignore
 import confetti from "canvas-confetti";
 
 export default function Contact() {
@@ -19,7 +21,6 @@ export default function Contact() {
     navigator.clipboard.writeText(email);
     setCopied(true);
 
-    // Trigger Confetti
     confetti({
       particleCount: 150,
       spread: 70,
@@ -38,7 +39,6 @@ export default function Contact() {
           whileInView={{ opacity: 1, scale: 1 }}
           className="relative overflow-hidden rounded-3xl bg-slate-900 border border-white/10 p-12 shadow-2xl"
         >
-          {/* Decorative Glow */}
           <div className="absolute -top-24 -left-24 w-48 h-48 bg-cyan-500/20 rounded-full blur-3xl" />
           <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl" />
 
@@ -50,7 +50,6 @@ export default function Contact() {
           </p>
 
           <div className="flex flex-col items-center gap-6">
-            {/* The Email Button */}
             <button
               onClick={handleCopy}
               className="group relative flex items-center gap-4 px-8 py-4 rounded-2xl bg-slate-950 border border-white/10 hover:border-cyan-500/50 transition-all active:scale-95"
@@ -66,7 +65,6 @@ export default function Contact() {
               </div>
             </button>
 
-            {/* Social Links */}
             <div className="flex gap-4 mt-4">
               {[
                 { Icon: Github, href: "https://github.com/Gauravmishra01" },
