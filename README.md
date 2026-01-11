@@ -4,11 +4,11 @@ Welcome to the repository for my personal portfolio! This repository contains al
 
 ## 🚀 About Me
 
-I am a dedicated and passionate professional with expertise in [your specific field or skills]. My portfolio is a reflection of my journey, showcasing projects and accomplishments that I'm proud to share.
+I am a dedicated and passionate professional with expertise in FullStack Development. My portfolio is a reflection of my journey, showcasing projects and accomplishments that I'm proud to share.
 
 ## 📂 Repository Contents
 
-- **`index.html`**: The main HTML file for the website.
+- **`index.html`**: The main HTML file for the website
 - **`styles/`**: This directory contains the CSS files for styling the website.
 - **`scripts/`**: All JavaScript files are located here.
 - **`assets/`**: This folder contains images, videos, and other media assets.
