@@ -56,6 +56,26 @@ const projects: Project[] = [
     githubLink: "https://github.com/Gauravmishra01/ekart-ecommerce",
     image: "/projects/ecommerce.jpg",
   },
+  {
+    id: 4,
+    title: "🛒 Ekart E-commerce Platform",
+    category: "React • Vite • TailwindCSS • Node.js • MongoDB",
+    className: "md:col-span-2",
+    gradient: "from-orange-500/20 to-red-500/20",
+    liveLink: "https://ekart-ecommerce.vercel.app/",
+    githubLink: "https://github.com/Gauravmishra01/ekart-ecommerce",
+    image: "/projects/ecommerce.jpg",
+  },
+  {
+    id: 4,
+    title: "🛒 Ekart E-commerce Platform",
+    category: "React • Vite • TailwindCSS • Node.js • MongoDB",
+    className: "md:col-span-2",
+    gradient: "from-orange-500/20 to-red-500/20",
+    liveLink: "https://ekart-ecommerce.vercel.app/",
+    githubLink: "https://github.com/Gauravmishra01/ekart-ecommerce",
+    image: "/projects/ecommerce.jpg",
+  },
 ];
 
 const Card = ({ project }: { project: Project }) => {
