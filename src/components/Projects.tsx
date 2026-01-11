@@ -20,7 +20,7 @@ const projects: Project[] = [
     id: 1,
     title: "📍Realtime Tracker",
     category: "Node.js • Express.js • Socket.io",
-    className: "md:col-span-2", // Spans 2 columns on desktop, 1 on mobile
+    className: "md:col-span-2",
     gradient: "from-cyan-500/20 to-blue-500/20",
     liveLink: "https://realtime-tracker-2z3j.onrender.com/",
     githubLink: "https://github.com/Gauravmishra01/Realtime_Tracker",
@@ -56,25 +56,46 @@ const projects: Project[] = [
     githubLink: "https://github.com/Gauravmishra01/ekart-ecommerce",
     image: "/projects/ecommerce.jpg",
   },
+  // --- NEW PROJECTS ADDED BELOW ---
   {
-    id: 4,
-    title: "🛒 Ekart E-commerce Platform",
-    category: "React • Vite • TailwindCSS • Node.js • MongoDB",
-    className: "md:col-span-2",
-    gradient: "from-orange-500/20 to-red-500/20",
-    liveLink: "https://ekart-ecommerce.vercel.app/",
-    githubLink: "https://github.com/Gauravmishra01/ekart-ecommerce",
-    image: "/projects/ecommerce.jpg",
+    id: 5,
+    title: "🔐 AuthShield SaaS",
+    category: "Next.js 14 • NextAuth • PostgreSQL • Prisma",
+    className: "md:col-span-1",
+    gradient: "from-blue-600/20 to-cyan-400/20",
+    liveLink: "#",
+    githubLink: "#",
+    image: "/projects/auth.jpg",
   },
   {
-    id: 4,
-    title: "🛒 Ekart E-commerce Platform",
-    category: "React • Vite • TailwindCSS • Node.js • MongoDB",
-    className: "md:col-span-2",
-    gradient: "from-orange-500/20 to-red-500/20",
-    liveLink: "https://ekart-ecommerce.vercel.app/",
-    githubLink: "https://github.com/Gauravmishra01/ekart-ecommerce",
-    image: "/projects/ecommerce.jpg",
+    id: 6,
+    title: "📊 FinTrack Dashboard",
+    category: "React • Recharts • Firebase • TailwindCSS",
+    className: "md:col-span-1",
+    gradient: "from-amber-500/20 to-yellow-300/20",
+    liveLink: "#",
+    githubLink: "#",
+    image: "/projects/finance.jpg",
+  },
+  {
+    id: 7,
+    title: "🤖 PromptGen AI",
+    category: "OpenAI • Next.js • TailwindCSS • Vercel",
+    className: "md:col-span-1",
+    gradient: "from-rose-500/20 to-orange-400/20",
+    liveLink: "#",
+    githubLink: "#",
+    image: "/projects/ai-tool.jpg",
+  },
+  {
+    id: 8,
+    title: "💬 Nexus Social",
+    category: "React • Appwrite • Cloudinary • Shadcn UI",
+    className: "md:col-span-3", // A full-width feature card at the bottom
+    gradient: "from-indigo-500/20 to-purple-400/20",
+    liveLink: "#",
+    githubLink: "#",
+    image: "/projects/social.jpg",
   },
 ];
 
@@ -85,13 +106,11 @@ const Card = ({ project }: { project: Project }) => {
       whileHover={{ scale: 1.01 }}
       className={`relative overflow-hidden rounded-3xl bg-slate-900 border border-white/10 p-5 md:p-6 ${project.className} group flex flex-col justify-between`}
     >
-      {/* Dynamic Background Gradient on Hover */}
       <div
         className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
       />
 
       <div className="relative z-10 flex flex-col justify-between h-full min-h-[280px] md:min-h-[320px]">
-        {/* Header Section: Title & Category */}
         <div className="flex justify-between items-start gap-4">
           <div className="flex-1">
             <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan-200 transition-colors line-clamp-1">
@@ -102,7 +121,6 @@ const Card = ({ project }: { project: Project }) => {
             </p>
           </div>
 
-          {/* Action Icons */}
           <div className="flex gap-2 shrink-0">
             <Link
               href={project.githubLink}
@@ -123,13 +141,14 @@ const Card = ({ project }: { project: Project }) => {
           </div>
         </div>
 
-        {/* Image Preview Area */}
         <Link
           href={project.liveLink}
           target="_blank"
           className="block mt-6 overflow-hidden rounded-2xl border border-white/5 group/preview relative aspect-video sm:aspect-auto sm:h-44 md:h-52"
         >
           <div className="w-full h-full relative">
+            {/* Added a fallback background color while images load */}
+            <div className="absolute inset-0 bg-slate-800 animate-pulse" />
             <Image
               src={project.image}
               alt={`${project.title} preview`}
@@ -138,7 +157,6 @@ const Card = ({ project }: { project: Project }) => {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
 
-            {/* Mobile-friendly overlay (always visible or on-tap) */}
             <div className="absolute inset-0 bg-slate-950/20 md:bg-slate-950/40 flex items-center justify-center opacity-0 group-hover/preview:opacity-100 transition-opacity">
               <span className="text-white text-[10px] md:text-xs font-bold uppercase tracking-widest bg-slate-900/90 px-4 py-2 rounded-full border border-white/10 backdrop-blur-sm">
                 View Live Project
@@ -174,7 +192,6 @@ export default function Projects() {
         </motion.div>
       </div>
 
-      {/* Grid: 1 column on mobile, 3 columns on desktop */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8">
         {projects.map((project, index) => (
           <motion.div
