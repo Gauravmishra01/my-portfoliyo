@@ -32,12 +32,12 @@ const useTypewriter = (text: string, speed: number = 50) => {
  * A glowing indicator to show recruiters you are currently available.
  */
 const LiveStatus = () => (
-  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-8">
+  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6 md:mb-8">
     <span className="relative flex h-2 w-2">
       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
       <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
     </span>
-    <span className="text-xs font-medium text-emerald-500 uppercase tracking-wider">
+    <span className="text-[10px] md:text-xs font-medium text-emerald-500 uppercase tracking-wider whitespace-nowrap">
       Available for new projects
     </span>
   </div>
@@ -54,7 +54,6 @@ export default function Hero() {
 
   /**
    * Smooth scrolls to a specific element by ID.
-   * Ensure your sections have id="projects" and id="contact".
    */
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -67,7 +66,7 @@ export default function Hero() {
   };
 
   /**
-   * Tracks mouse movement to update the radial spotlight background.
+   * Tracks mouse movement for the radial spotlight background.
    */
   function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
     const { left, top } = currentTarget.getBoundingClientRect();
@@ -77,16 +76,20 @@ export default function Hero() {
 
   return (
     <div
-      className="group relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-slate-950 px-4 py-20"
+      className="group relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-slate-950 px-4 py-16 md:py-24"
       onMouseMove={handleMouseMove}
     >
-      {/* Interactive Spotlight Background */}
+      {/* Interactive Spotlight Background - Reduced size on mobile for performance */}
       <motion.div
         className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
         style={{
           background: useMotionTemplate`
             radial-gradient(
-              650px circle at ${mouseX}px ${mouseY}px,
+              ${
+                typeof window !== "undefined" && window.innerWidth < 768
+                  ? "350px"
+                  : "650px"
+              } circle at ${mouseX}px ${mouseY}px,
               rgba(14, 165, 233, 0.15),
               transparent 80%
             )
@@ -97,41 +100,41 @@ export default function Hero() {
       {/* Grainy Texture Overlay */}
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none" />
 
-      <div className="relative z-10 max-w-4xl text-center">
+      <div className="relative z-10 w-full max-w-5xl text-center">
         <LiveStatus />
 
-        {/* Name Headline */}
+        {/* Name Headline - Fluid sizing: text-4xl on tiny phones, text-8xl on desktop */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-6xl md:text-8xl font-bold tracking-tight text-white mb-6"
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-6 leading-tight"
         >
           Gaurav{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 block sm:inline">
             Mishra
           </span>
         </motion.h1>
 
-        {/* Animated Sub-headline */}
-        <div className="min-h-[4rem] md:h-12">
-          <p className="text-lg md:text-2xl text-slate-400 font-mono max-w-2xl mx-auto">
+        {/* Animated Sub-headline - Min-height prevents layout shift on mobile wrap */}
+        <div className="min-h-[5rem] sm:min-h-[4rem] md:h-12 flex items-center justify-center">
+          <p className="text-base sm:text-lg md:text-2xl text-slate-400 font-mono max-w-2xl mx-auto px-2">
             {typewriterText}
             <span className="animate-pulse text-cyan-500">_</span>
           </p>
         </div>
 
-        {/* Responsive Button Group */}
+        {/* Responsive Button Group - Vertical on mobile, Horizontal on desktop */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 1 }}
-          className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="mt-10 md:mt-14 flex flex-col sm:flex-row gap-4 justify-center items-center px-6"
         >
           {/* View Work Button */}
           <button
             onClick={() => scrollToSection("projects")}
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-cyan-500 text-slate-950 font-bold hover:bg-cyan-400 hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)]"
+            className="w-full sm:w-auto px-8 py-4 rounded-full bg-cyan-500 text-slate-950 font-bold hover:bg-cyan-400 hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)] text-sm md:text-base"
           >
             View Work
           </button>
@@ -139,7 +142,7 @@ export default function Hero() {
           {/* Contact Button */}
           <button
             onClick={() => scrollToSection("contact")}
-            className="w-full sm:w-auto px-8 py-4 rounded-full border border-slate-700 text-slate-300 hover:bg-slate-800 hover:border-slate-500 hover:scale-105 active:scale-95 transition-all"
+            className="w-full sm:w-auto px-8 py-4 rounded-full border border-slate-700 text-slate-300 hover:bg-slate-800 hover:border-slate-500 hover:scale-105 active:scale-95 transition-all text-sm md:text-base"
           >
             Contact Me
           </button>
