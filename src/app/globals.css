@@ -1,39 +1,43 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Defining your custom slate-950 theme as the default */
+  --color-background: #020617; /* slate-950 */
+  --color-foreground: #f1f5f9; /* slate-100 */
+
+  /* Ensuring fonts are mapped correctly if using Geist or Inter */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* 1. Global Reset & Behavior */
+html {
+  scroll-behavior: smooth;
+  /* Prevent horizontal bounce on mobile */
+  overflow-x: hidden;
+  /* Ensure the background color fills the bounce area on iOS */
+  background-color: #020617;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #020617;
+  color: #f1f5f9;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-/* Optional: hide scrollbar but allow scrolling */
+/* 2. Hide Scrollbars while keeping functionality (optional but cleaner) */
 body::-webkit-scrollbar {
   display: none;
 }
 body {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* 3. Utility for the "Selection" color we used in Hero.tsx */
+::selection {
+  background-color: rgba(34, 211, 238, 0.3); /* Cyan-500 with opacity */
+  color: #ffffff;
 }
